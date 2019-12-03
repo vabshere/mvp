@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Add Sales</h1>
+<div mat-dialog-content>
+  <form class="form" #addSales="ngForm" fxLayout="column">
+    <mat-form-field>
+      <input
+        required
+        ngModel
+        #name="ngModel"
+        name="name"
+        matInput
+        placeholder="Name"
+        [(ngModel)]="data.name"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        required
+        ngModel
+        #phone="ngModel"
+        name="phone"
+        matInput
+        placeholder="Phone"
+        [(ngModel)]="data.phone"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        required
+        ngModel
+        #zone="ngModel"
+        name="zone"
+        matInput
+        placeholder="Zone"
+        [(ngModel)]="data.zone"
+      />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button
+    mat-button
+    [mat-dialog-close]="data"
+    [disabled]="!addSales.valid"
+    cdkFocusInitial
+  >
+    Ok
+  </button>
+</div>

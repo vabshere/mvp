@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mvp1-dc38c": {
+      "hosting": {
+        "app": [
+          "mvp1-dc38c"
+        ]
+      }
+    }
+  }
+}

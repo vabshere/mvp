@@ -1,0 +1,33 @@
+.parent {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 4vh;
+}
+
+.stats {
+  width: 100%;
+}
+
+.stat {
+  padding: 2.4vh 1.8vw;
+  border-radius: 15px;
+  width: 12vw;
+  color: white;
+}
+
+.num {
+  font-size: 1.7em;
+}
+
+.name {
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+}
+
+th,
+td {
+  padding: 2vh 3vw !important;
+}

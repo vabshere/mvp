@@ -1,0 +1,64 @@
+<div
+  class="parent"
+  fxLayout="column"
+  fxLayoutGap="2vh"
+  fxLayoutAlign="none center"
+>
+  <div class="stats" fxLayoutAlign="space-around">
+    <div
+      class="stat"
+      *ngFor="let stat of stats; let i = index"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      [style.background]="backgrounds[i]"
+    >
+      <div class="num">{{ stat.number }}</div>
+      <div class="name">{{ stat.name }}</div>
+    </div>
+  </div>
+
+  <div class="table-group">
+    <mat-form-field>
+      <input
+        matInput
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="Filter"
+      />
+    </mat-form-field>
+
+    <table
+      class="table"
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="shop">
+        <th mat-header-cell *matHeaderCellDef>Shop</th>
+        <td mat-cell *matCellDef="let element">{{ element.shop }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="salesman">
+        <th mat-header-cell *matHeaderCellDef>Salesman</th>
+        <td mat-cell *matCellDef="let element">{{ element.salesman }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="zone">
+        <th mat-header-cell *matHeaderCellDef>Zone</th>
+        <td mat-cell *matCellDef="let element">{{ element.zone }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
+        <td mat-cell *matCellDef="let element">Rs. {{ element.amount }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="pending">
+        <th mat-header-cell *matHeaderCellDef>Pending</th>
+        <td mat-cell *matCellDef="let element">Rs. {{ element.pending }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

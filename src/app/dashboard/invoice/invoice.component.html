@@ -1,0 +1,71 @@
+<div
+  class="invoice"
+  fxLayout="column"
+  fxLayoutGap="2vh"
+  fxLayoutAlign="none center"
+>
+  <div class="table-group">
+    <div fxLayoutAlign="space-between center">
+      <mat-form-field>
+        <input
+          matInput
+          (keyup)="applyFilter($event.target.value)"
+          placeholder="Filter"
+        />
+      </mat-form-field>
+      <div fxLayout fxLayoutGap="5px">
+        <button mat-raised-button style="height: 80%;" (click)="invoiceForm()">
+          + Manual Upload
+        </button>
+        <button type="button" mat-raised-button (click)="fileInput.click()">
+          Choose File
+        </button>
+        <input
+          hidden
+          #fileInput
+          type="file"
+          id="file"
+          (change)="onFileChange($event)"
+          multiple="false"
+        />
+      </div>
+    </div>
+
+    <table
+      class="table"
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="serial">
+        <th mat-header-cell *matHeaderCellDef>Serial No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.serial }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="invoiceDate">
+        <th mat-header-cell *matHeaderCellDef>Invoice Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.invoiceDate }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
+        <td mat-cell *matCellDef="let element">Rs. {{ element.amount }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="prevOustanding">
+        <th mat-header-cell *matHeaderCellDef>Previous Outstanding</th>
+        <td mat-cell *matCellDef="let element">
+          Rs. {{ element.prevOustanding }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastReceived">
+        <th mat-header-cell *matHeaderCellDef>Last Received</th>
+        <td mat-cell *matCellDef="let element">{{ element.lastReceived }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

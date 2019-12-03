@@ -1,0 +1,78 @@
+<h1 mat-dialog-title>Add Shops</h1>
+<div mat-dialog-content>
+  <form class="form" #addShops="ngForm" fxLayout="column">
+    <div fxLayout fxLayoutGap="5px">
+      <mat-form-field>
+        <input
+          required
+          ngModel
+          #serial="ngModel"
+          name="serial"
+          matInput
+          placeholder="Serial"
+          [(ngModel)]="data.serial"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          required
+          ngModel
+          #name="ngModel"
+          name="name"
+          matInput
+          placeholder="Name"
+          [(ngModel)]="data.name"
+        />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout fxLayoutGap="5px">
+      <mat-form-field>
+        <input
+          required
+          ngModel
+          #phone="ngModel"
+          name="phone"
+          matInput
+          placeholder="Phone"
+          [(ngModel)]="data.phone"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          required
+          ngModel
+          #owner="ngModel"
+          name="owner"
+          matInput
+          placeholder="Owner"
+          [(ngModel)]="data.owner"
+        />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <input
+        required
+        ngModel
+        #address="ngModel"
+        name="address"
+        matInput
+        placeholder="Address"
+        [(ngModel)]="data.address"
+      />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button
+    mat-button
+    [mat-dialog-close]="data"
+    [disabled]="!addShops.valid"
+    cdkFocusInitial
+  >
+    Ok
+  </button>
+</div>

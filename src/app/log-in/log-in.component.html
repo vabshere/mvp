@@ -1,0 +1,50 @@
+<div class="log-in" fxLayoutAlign="center center">
+  <mat-card class="card">
+    <div fxLayoutAlign="center center">Log In</div>
+    <form
+      class="form"
+      #register="ngForm"
+      (ngSubmit)="onSubmit()"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <mat-form-field>
+        <input
+          required
+          ngModel
+          #email="ngModel"
+          type="email"
+          name="email"
+          matInput
+          placeholder="Email ID"
+          [(ngModel)]="user.email"
+        />
+        <mat-error *ngIf="email.errors">Valid email required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          required
+          ngModel
+          #password="ngModel"
+          type="password"
+          name="password"
+          matInput
+          placeholder="Password"
+          [(ngModel)]="user.password"
+        />
+        <mat-error *ngIf="password.errors">Valid password required</mat-error>
+      </mat-form-field>
+      <button
+        class="submit"
+        mat-raised-button
+        type="submit"
+        [disabled]="!register.valid"
+        color="primary"
+        style="width: 80%"
+      >
+        Submit
+      </button>
+    </form>
+  </mat-card>
+</div>
